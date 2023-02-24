@@ -15,23 +15,32 @@ export const useTodoStore = defineStore("todoStore", {
       if (!payload) return;
 
       this.todoBoard[0].tasks.push(payload);
-
-      localStorage.setItem("todo-board", JSON.stringify(this.todoBoard));
     },
     updateTask(payload: TaskUpdatePayload) {
       if (!payload) return;
 
       this.task.title = payload.title;
       this.task.description = payload.description;
+    },
+    deleteTask() {
+      const columnToDeleteFrom = this.todoBoard.find(column => column.id === this.task.status);
+      
+      if (!columnToDeleteFrom) return;
 
-      localStorage.setItem("todo-board", JSON.stringify(this.todoBoard));
+      const taskIndex = columnToDeleteFrom.tasks.findIndex(task => task.id === this.task.id);
+      columnToDeleteFrom.tasks.splice(taskIndex, 1);
     },
-    deleteTask(id: string) {
-      //
-    },
-    moveTask(from: Task[], to: Task[], taskIndex: number) {
-      const taskToMove = from.splice(taskIndex, 1)[0];
-      to.push(taskToMove);
+    moveTask(from: Column, to: Column, taskId: string, taskIndex: number) {
+      console.log(`moving from ${from.id} column to ${to.id} column. task id is ${taskId} and index = ${taskIndex}`);
+      
+      if (!from.availableColumns.includes(to.id)) return;
+
+      console.log('can move');
+      // add styling to available column
+      
+
+      const taskToMove = from.tasks.splice(taskIndex, 1)[0];
+      to.tasks.push(taskToMove);
     }
   },
 
@@ -53,6 +62,7 @@ export const useTodoStore = defineStore("todoStore", {
 export interface Column {
   id: string;
   name: string;
+  availableColumns: string[];
   tasks: Task[];
 }
 

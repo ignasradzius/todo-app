@@ -18,20 +18,23 @@ function handleSubmit() {
   newTaskTitle.value = "";
 }
 
-function startDrag(event: DragEvent, taskIndex: string, fromColumnIndex: string) {
+function startDrag(event: DragEvent, taskIndex: number, fromColumnIndex: string, taskId: string) {
   event.dataTransfer!.dropEffect = 'move';
   event.dataTransfer!.effectAllowed = 'move';
-
-  event.dataTransfer!.setData('task-index', taskIndex);
+  
+  event.dataTransfer!.setData('task-index', String(taskIndex));
+  event.dataTransfer!.setData('task-id', taskId);
   event.dataTransfer!.setData('from-column-index', fromColumnIndex);
+  console.log(event);
 }
 
-function moveTask(event: DragEvent, toTasks: Task[]) {
+function moveTask(event: DragEvent, toTasks: Column) {
   const fromColumnIndex = event.dataTransfer!.getData('from-column-index');
-  const fromTasks = todoStore.todoBoard[Number(fromColumnIndex)].tasks;
+  const fromColumn = todoStore.todoBoard[Number(fromColumnIndex)];
   const taskIndex = event.dataTransfer!.getData('task-index');
+  const taskId = event.dataTransfer!.getData('task-id');
 
-  todoStore.moveTask(fromTasks, toTasks, Number(taskIndex))
+  todoStore.moveTask(fromColumn, toTasks, taskId, Number(taskIndex))
 }
 </script>
 
@@ -45,7 +48,7 @@ function moveTask(event: DragEvent, toTasks: Task[]) {
             type="text"
             placeholder="+ Create a new task"
             class="text-center bg-transparent w-full"
-            @keyup.enter="handleSubmit()"
+            @keyup.enter="handleSubmit"
           />
         </div>
       </div>
@@ -57,7 +60,7 @@ function moveTask(event: DragEvent, toTasks: Task[]) {
       >
         <div 
           class="column"
-          @drop="moveTask($event, column.tasks)"
+          @drop="moveTask($event, column)"
           @dragenter.prevent
           @dragover.prevent
         >
@@ -69,7 +72,7 @@ function moveTask(event: DragEvent, toTasks: Task[]) {
               :key="task.id"
               class="task border-2 border-orange-400"
               draggable="true"
-              @dragstart="startDrag($event, String($taskIndex), String($columnIndex))"
+              @dragstart="startDrag($event, $taskIndex, String($columnIndex), task.id)"
               @click="$router.push({ name: 'task', params: { id: task.id } })"
             >
               <h4 class="font-bold text-sm">{{ task.title }}</h4>

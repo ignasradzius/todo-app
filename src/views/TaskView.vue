@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { useTodoStore } from "@/stores/useTodoStore";
 import { reactive, ref } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
+const router = useRouter();
 const todoStore = useTodoStore();
 
 todoStore.getTaskById(`${route.params.id}`)
@@ -15,6 +16,11 @@ const form = reactive({
 
 function updateTask() {
   todoStore.updateTask(form)
+}
+
+function deleteTask() {
+  todoStore.deleteTask();
+  router.push({name: 'home'});
 }
 </script>
 
@@ -63,7 +69,10 @@ function updateTask() {
                 Update
               </button>
   
-              <button class="w-full sm:w-min border border-teal-700 px-4 rounded hover:bg-rose-300 active:bg-rose-400 transition-colors duration-300">
+              <button 
+                class="w-full sm:w-min border border-teal-700 px-4 rounded hover:bg-rose-300 active:bg-rose-400 transition-colors duration-300"
+                @click="deleteTask"
+              >
                 Delete
               </button>
             </div>

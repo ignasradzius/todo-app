@@ -4,6 +4,7 @@ export const columns = [
   {
     id: "opened",
     name: "Opened",
+    availableColumns: ["in-progress", "closed"],
     tasks: [
       {
         id: uuid(),
@@ -22,6 +23,7 @@ export const columns = [
   {
     id: "in-progress",
     name: "In progress",
+    availableColumns: ["opened", "done", "closed"],
     tasks: [
       {
         id: uuid(),
@@ -40,6 +42,7 @@ export const columns = [
   {
     id: "done",
     name: "Done",
+    availableColumns: ["closed"],
     tasks: [
       {
         id: uuid(),
@@ -52,6 +55,7 @@ export const columns = [
   {
     id: "closed",
     name: "Closed",
+    availableColumns: ["opened"],
     tasks: [
       {
         id: uuid(),

@@ -8,8 +8,8 @@ export const useTodoStore = defineStore("todoStore", {
   state: () => ({
     todoBoard: _todoBoard as Column[],
     task: {} as Partial<Task>,
-    pickedTask: {} as Partial<Task>,
-    dragginFromColumn: {} as Partial<Column>,
+    pickedTask: {} as Task | null,
+    dragginFromColumn: {} as Column | null,
   }),
 
   actions: {
@@ -46,6 +46,10 @@ export const useTodoStore = defineStore("todoStore", {
         status: to.id,
       });
     },
+    endDrag() {
+      this.dragginFromColumn = null;
+      this.pickedTask = null;
+    }
   },
 
   getters: {

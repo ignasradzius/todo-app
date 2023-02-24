@@ -7,7 +7,7 @@ const _todoBoard =
 export const useTodoStore = defineStore("todoStore", {
   state: () => ({
     todoBoard: _todoBoard as Column[],
-    task: {} as Task,
+    task: {} as Partial<Task>,
   }),
 
   actions: {
@@ -33,12 +33,16 @@ export const useTodoStore = defineStore("todoStore", {
         (task) => task.id === this.task.id
       );
       columnToDeleteFrom.tasks.splice(taskIndex, 1);
+      this.task = {};
     },
     moveTask(from: Column, to: Column, taskId: string, taskIndex: number) {
       if (!from.availableColumns.includes(to.id)) return;
 
       const taskToMove = from.tasks.splice(taskIndex, 1)[0];
-      to.tasks.push(taskToMove);
+      to.tasks.push({
+        ...taskToMove,
+        status: to.id,
+      });
     },
   },
 

@@ -58,26 +58,26 @@ if (!Object.keys(todoStore.task).length) {
               name="title"
               placeholder="Title"
               required
-              class="border border-gray-500 rounded p-2 text-gray-700"
+              class="border border-gray-500 rounded-lg p-2 text-gray-700"
             />
             <textarea
               v-model="form.description"
               type="text"
               name="description"
               placeholder="Description"
-              class="border border-gray-500 rounded p-2 text-gray-700"
+              class="border border-gray-500 rounded-lg p-2 text-gray-700"
             />
 
             <div class="flex gap-2 place-content-end mt-2">
               <button
                 type="submit"
-                class="w-full sm:w-min border border-teal-700 px-4 rounded hover:bg-green-200 active:bg-green-300 transition-colors duration-300"
+                class="w-full sm:w-min border border-teal-700 px-4 rounded-lg hover:bg-green-200 active:bg-green-300 transition-colors duration-300"
               >
                 Update
               </button>
 
               <button
-                class="w-full sm:w-min border border-teal-700 px-4 rounded hover:bg-rose-300 active:bg-rose-400 transition-colors duration-300"
+                class="w-full sm:w-min border border-teal-700 px-4 rounded-lg hover:bg-rose-300 active:bg-rose-400 transition-colors duration-300"
                 @click="deleteTask"
               >
                 Delete

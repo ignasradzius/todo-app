@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useTodoStore } from "@/stores/useTodoStore";
+import { useTodoStore } from "@/store/useTodoStore";
 import { reactive, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
@@ -25,9 +25,9 @@ function deleteTask() {
 
 if (!Object.keys(todoStore.task).length) {
   router.push({
-    name: '404Resource',
-    params: { resource: 'task' }
-  })
+    name: "404Resource",
+    params: { resource: "task" },
+  });
 }
 </script>
 
@@ -52,6 +52,13 @@ if (!Object.keys(todoStore.task).length) {
             @submit.prevent="updateTask"
             class="flex flex-col gap-2 p-4 sm:p-6"
           >
+            <input
+              type="text"
+              readonly
+              name="status"
+              :value="`Status: ${todoStore.task.status}`"
+              class="text-right"
+            />
             <input
               v-model="form.title"
               type="text"

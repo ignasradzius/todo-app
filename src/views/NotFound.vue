@@ -1,11 +1,11 @@
 <script setup lang="ts">
 export interface Props {
-  resource: string
+  resource: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  resource: 'page'
-})
+  resource: "page",
+});
 </script>
 
 <template>
@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<Props>(), {
     <h3 class="text-xl text-center mt-5">
       The {{ resource }} you're looking for is not here.
     </h3>
-    <router-link 
+    <router-link
       class="underline block mt-4 hover:opacity-80"
       :to="{ name: 'home' }"
     >

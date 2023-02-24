@@ -2,12 +2,14 @@ import { defineStore } from "pinia";
 import { columns as defaultColumns } from "@/default-board";
 
 const _todoBoard =
-  JSON.parse(localStorage.getItem("todo-board")!) || defaultColumns;
+  JSON.parse(localStorage.getItem("todo-board-19910729")!) || defaultColumns;
 
 export const useTodoStore = defineStore("todoStore", {
   state: () => ({
     todoBoard: _todoBoard as Column[],
     task: {} as Partial<Task>,
+    pickedTask: {} as Partial<Task>,
+    dragginFromColumn: {} as Partial<Column>,
   }),
 
   actions: {

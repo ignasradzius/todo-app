@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-import TodoView from "@/views/TodoView.vue";
-import TaskView from "@/views/TaskView.vue";
+import TodoView from "@/views/TodoBoard.vue";
+import TaskView from "@/views/TaskModal.vue";
 import NotFound from "@/views/NotFound.vue";
 
 const router = createRouter({
@@ -27,7 +27,7 @@ const router = createRouter({
       path: "/404/:resource",
       name: "404Resource",
       component: NotFound,
-      props: true
+      props: true,
     },
   ],
 });

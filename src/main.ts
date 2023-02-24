@@ -16,7 +16,7 @@ app.mount("#app");
 watch(
   () => pinia.state.value.todoStore?.todoBoard,
   (todoBoard) => {
-    localStorage.setItem('todo-board', JSON.stringify(todoBoard));
+    localStorage.setItem("todo-board", JSON.stringify(todoBoard));
   },
   { deep: true }
-)
+);

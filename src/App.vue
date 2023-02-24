@@ -3,7 +3,7 @@ import { RouterView } from "vue-router";
 </script>
 
 <template>
-  <header class="p-6 bg-emerald-600">
+  <header class="fixed top-0 w-full p-6 bg-emerald-600 shadow-md">
     <router-link to="/" class="text-gray-100 font-bold text-2xl">
       Todo app
     </router-link>

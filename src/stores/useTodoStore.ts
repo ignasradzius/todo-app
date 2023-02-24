@@ -23,25 +23,23 @@ export const useTodoStore = defineStore("todoStore", {
       this.task.description = payload.description;
     },
     deleteTask() {
-      const columnToDeleteFrom = this.todoBoard.find(column => column.id === this.task.status);
-      
-      if (!columnToDeleteFrom) return;
+      const columnToDeleteFrom = this.todoBoard.find(
+        (column) => column.id === this.task.status
+      );
 
-      const taskIndex = columnToDeleteFrom.tasks.findIndex(task => task.id === this.task.id);
+      if (!columnToDeleteFrom || !this.task.status) return;
+
+      const taskIndex = columnToDeleteFrom.tasks.findIndex(
+        (task) => task.id === this.task.id
+      );
       columnToDeleteFrom.tasks.splice(taskIndex, 1);
     },
     moveTask(from: Column, to: Column, taskId: string, taskIndex: number) {
-      console.log(`moving from ${from.id} column to ${to.id} column. task id is ${taskId} and index = ${taskIndex}`);
-      
       if (!from.availableColumns.includes(to.id)) return;
-
-      console.log('can move');
-      // add styling to available column
-      
 
       const taskToMove = from.tasks.splice(taskIndex, 1)[0];
       to.tasks.push(taskToMove);
-    }
+    },
   },
 
   getters: {

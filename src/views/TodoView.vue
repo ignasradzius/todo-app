@@ -129,7 +129,7 @@ function isColumnAvailable(columnId: string): boolean {
 
 <style lang="css" scoped>
 .board {
-  @apply overflow-x-scroll hide-scroll-bar pb-6 pt-28 min-h-screen;
+  @apply overflow-x-scroll hide-scroll-bar pb-6 pt-28 min-h-screen bg-slate-100;
 }
 
 .column {
@@ -138,7 +138,7 @@ function isColumnAvailable(columnId: string): boolean {
 }
 
 .task {
-  @apply flex items-start flex-col shadow mb-2 p-2 rounded bg-white text-gray-900;
+  @apply flex items-start flex-col shadow mb-2 p-2 rounded bg-white text-gray-900 hover:cursor-pointer;
 }
 
 .hide-scroll-bar {

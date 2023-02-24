@@ -1,4 +1,4 @@
-<!-- <script setup lang="ts">
+<script setup lang="ts">
 export interface Props {
   resource: string
 }
@@ -6,14 +6,19 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {
   resource: 'page'
 })
-</script> -->
+</script>
 
 <template>
-  <div class="container mx-auto mt-20">
+  <div class="h-screen container mx-auto text-center mt-40">
     <h1 class="text-4xl text-center">Oops!</h1>
     <h3 class="text-xl text-center mt-5">
-      The page you're looking for is not here.
+      The {{ resource }} you're looking for is not here.
     </h3>
-    <router-link :to="{ name: 'home' }">Back to the home page</router-link>
+    <router-link 
+      class="underline block mt-4 hover:opacity-80"
+      :to="{ name: 'home' }"
+    >
+      Back to the home page
+    </router-link>
   </div>
 </template>

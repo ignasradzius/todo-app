@@ -22,6 +22,13 @@ function deleteTask() {
   todoStore.deleteTask();
   router.push({ name: "home" });
 }
+
+if (!Object.keys(todoStore.task).length) {
+  router.push({
+    name: '404Resource',
+    params: { resource: 'task' }
+  })
+}
 </script>
 
 <template>

@@ -23,6 +23,12 @@ const router = createRouter({
       name: "NotFound",
       component: NotFound,
     },
+    {
+      path: "/404/:resource",
+      name: "404Resource",
+      component: NotFound,
+      props: true
+    },
   ],
 });
 

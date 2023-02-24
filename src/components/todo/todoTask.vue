@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useTodoStore, type Task } from '@/store/useTodoStore';
+import { useTodoStore, type Task } from "@/store/useTodoStore";
 
 const props = defineProps<{
-  task: Task
-  taskIndex: number
-  columnIndex: number
+  task: Task;
+  taskIndex: number;
+  columnIndex: number;
 }>();
 
 const todoStore = useTodoStore();

@@ -44,7 +44,7 @@ function handleSubmit() {
         </button>
       </div>
 
-      <todo-column 
+      <todo-column
         v-for="(column, $columnIndex) in todoStore.todoBoard"
         :key="column.id"
         :column="column"

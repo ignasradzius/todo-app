@@ -49,7 +49,7 @@ export const useTodoStore = defineStore("todoStore", {
     endDrag() {
       this.dragginFromColumn = null;
       this.pickedTask = null;
-    }
+    },
   },
 
   getters: {

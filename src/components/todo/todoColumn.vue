@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useTodoStore, type Column } from '@/store/useTodoStore';
-import todoTask from './todoTask.vue';
+import { useTodoStore, type Column } from "@/store/useTodoStore";
+import todoTask from "./todoTask.vue";
 
 const props = defineProps<{
-  column: Column
-  columnIndex: number
+  column: Column;
+  columnIndex: number;
 }>();
 
 const todoStore = useTodoStore();
@@ -13,7 +13,12 @@ function dropTask(event: DragEvent, toTasks: Column) {
   const taskIndex = event.dataTransfer!.getData("task-index");
   const taskId = event.dataTransfer!.getData("task-id");
 
-  todoStore.moveTask(todoStore.dragginFromColumn!, toTasks, taskId, Number(taskIndex));
+  todoStore.moveTask(
+    todoStore.dragginFromColumn!,
+    toTasks,
+    taskId,
+    Number(taskIndex)
+  );
   todoStore.endDrag();
 }
 
@@ -41,7 +46,7 @@ function isColumnAvailable(columnId: string): boolean {
       </h3>
 
       <ul class="mt-4">
-        <todo-task 
+        <todo-task
           v-for="(task, $taskIndex) in column.tasks"
           :key="task.id"
           :task="task"

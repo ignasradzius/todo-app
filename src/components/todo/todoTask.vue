@@ -25,12 +25,13 @@ function startDrag(event: DragEvent, taskId: string) {
   <li
     class="task border-2 border-slate-500"
     draggable="true"
+    data-test="task"
     @dragstart="startDrag($event, task.id)"
     @dragend="todoStore.endDrag"
     @click="$router.push({ name: 'task', params: { id: task.id } })"
   >
-    <h4 class="font-bold text-sm">{{ task.title }}</h4>
-    <p class="text-sm italic text-gray-600">{{ task.description }}</p>
+    <h4 class="font-bold text-sm" data-test="task-title">{{ task.title }}</h4>
+    <p class="text-sm italic text-gray-600" data-test="task-description">{{ task.description }}</p>
   </li>
 </template>
 

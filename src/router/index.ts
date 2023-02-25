@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-import TodoView from "@/views/TodoBoard.vue";
-import TaskView from "@/views/TaskModal.vue";
+import TodoBoard from "@/views/TodoBoard.vue";
+import TaskModal from "@/views/TaskModal.vue";
 import NotFound from "@/views/NotFound.vue";
 
 const router = createRouter({
@@ -9,12 +9,12 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: TodoView,
+      component: TodoBoard,
       children: [
         {
           path: "task/:id",
           name: "task",
-          component: TaskView,
+          component: TaskModal,
         },
       ],
     },

@@ -41,7 +41,7 @@ function isColumnAvailable(columnId: string): boolean {
       @dragenter.prevent
       @dragover.prevent
     >
-      <h3 class="text-center font-bold text-slate-700">
+      <h3 class="text-center font-bold text-slate-700" data-test="column-name">
         {{ column.name }}
       </h3>
 
@@ -52,6 +52,7 @@ function isColumnAvailable(columnId: string): boolean {
           :task="task"
           :task-index="$taskIndex"
           :column-index="columnIndex"
+          data-test="todo-list"
         />
       </ul>
     </div>

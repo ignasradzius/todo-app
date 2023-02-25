@@ -1,4 +1,3 @@
-
 <script setup lang="ts">
 import { ref } from "vue";
 import { uuid } from "@/utils/uuid";
@@ -49,4 +48,5 @@ function handleSubmit() {
 .column {
   @apply border-2 p-2 inline-block text-left shadow-lg rounded;
   width: 260px;
-}</style>
+}
+</style>

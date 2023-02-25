@@ -16,6 +16,7 @@ const form = reactive({
 
 function updateTask() {
   todoStore.updateTask(form);
+  router.push({ name: "home" });
 }
 
 function deleteTask() {

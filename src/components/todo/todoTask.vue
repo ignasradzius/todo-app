@@ -31,7 +31,9 @@ function startDrag(event: DragEvent, taskId: string) {
     @click="$router.push({ name: 'task', params: { id: task.id } })"
   >
     <h4 class="font-bold text-sm" data-test="task-title">{{ task.title }}</h4>
-    <p class="text-sm italic text-gray-600" data-test="task-description">{{ task.description }}</p>
+    <p class="text-sm italic text-gray-600" data-test="task-description">
+      {{ task.description }}
+    </p>
   </li>
 </template>
 

@@ -5,20 +5,20 @@ import newTask from "../newTask.vue";
 
 describe("new-task-component", async () => {
   beforeEach(() => {
-    setActivePinia(createPinia())
-  })
+    setActivePinia(createPinia());
+  });
 
-  it('renders an input', () => {
-    const wrapper = mount(newTask)
-    const input = wrapper.get('[data-test="new-task-input"]')
-   
-    expect(input).toBeTruthy()
-  })
+  it("renders an input", () => {
+    const wrapper = mount(newTask);
+    const input = wrapper.get('[data-test="new-task-input"]');
 
-  it('renders a button', () => {
-    const wrapper = mount(newTask)
-    const button = wrapper.get('[data-test="new-task-button"]')
+    expect(input).toBeTruthy();
+  });
 
-    expect(button).toBeTruthy()
-  })
-})
+  it("renders a button", () => {
+    const wrapper = mount(newTask);
+    const button = wrapper.get('[data-test="new-task-button"]');
+
+    expect(button).toBeTruthy();
+  });
+});
